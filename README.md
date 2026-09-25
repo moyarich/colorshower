@@ -3,7 +3,7 @@
 VS Code/Monaco CSS color visualization extension.
 
 ## Workspace
-- `packages/colorshower` — `@moyarich/vscode-visualize-css-colors`
+- `packages/colorshower` — `@moyarich/colorshower`
 - `apps/playground` — TypeFox Monaco playground using the colorshower vscode web plugin
 
 
