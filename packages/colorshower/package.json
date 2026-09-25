@@ -1,7 +1,7 @@
 {
   "name": "@moyarich/colorshower",
   "version": "0.1.0",
-  "description": "CSS color visualization for desktop VS Code, web VS Code, and Monaco extension hosts.",
+  "description": "CSS color visualization for VS Code, VS Code for the Web, and Monaco editor hosts.",
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -35,7 +35,8 @@
     "extension.manifest.json"
   ],
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
   },
   "scripts": {
     "build": "node ./scripts/build.mjs",
@@ -61,7 +62,8 @@
     "demo:setup": "node ./demo/setup.mjs",
     "check": "npm run lint && npm run typecheck && npm test && npm run package",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "publish:github": "npm run check && npm publish"
   },
   "dependencies": {
     "@moyarich/css-color-parser": "git+https://github.com/moyarich/css-color-parser.git#480307a2b3efb6dcb3e7d70e833a9424cdf31956"
@@ -88,11 +90,14 @@
   },
   "homepage": "https://github.com/moyarich/colorshower#readme",
   "keywords": [
+    "colorshower",
     "vscode",
     "monaco",
     "web-extension",
     "css",
-    "color"
+    "color",
+    "color-picker",
+    "color-decorators"
   ],
   "engines": {
     "node": "^22.13.0 || >=24"
