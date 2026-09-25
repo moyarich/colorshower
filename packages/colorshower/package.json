@@ -44,7 +44,7 @@
     "prepack": "npm run build",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src scripts demo test tsup.config.ts --max-warnings 0",
-    "test": "npm run build && node --test test/*.test.mjs",
+    "test": "npm run build && node --test ../../tests/*.test.mjs",
     "package": "npm run build && node ./scripts/package-extension.mjs",
     "package:ls": "npm run build && node ./scripts/package-extension.mjs --list",
     "publish:openvsx": "npm run package && node --test test/*.test.mjs && node ./scripts/publish-extension.mjs",
@@ -59,7 +59,6 @@
     "demo:gif": "npm run build && node ./demo/gif.mjs",
     "demo:codegen": "npm run build && node ./demo/run.mjs --codegen",
     "demo:setup": "node ./demo/setup.mjs",
-    "prepare": "npm run build",
     "check": "npm run lint && npm run typecheck && npm test && npm run package",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
@@ -81,7 +80,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/moyarich/colorshower.git"
+    "url": "git+https://github.com/moyarich/colorshower.git",
+    "directory": "packages/colorshower"
   },
   "bugs": {
     "url": "https://github.com/moyarich/colorshower/issues"
