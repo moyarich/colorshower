@@ -19,8 +19,6 @@ jobs:
           node-version: 24
       - run: npm install --include=optional
       - run: npm run lint
-      - name: Print formatted integration test
-        run: npx prettier tests/extension.test.mjs
       - run: npm run format:check
       - run: npm run typecheck
       - run: npm test
