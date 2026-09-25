@@ -1,0 +1,19 @@
+:root {
+  --brand: #06c;
+  --accent: rgb(255 0 127 / 75%);
+  --named: rebeccapurple;
+  --mix: color-mix(in oklch, red 40%, blue);
+  --relative: hsl(from red calc(h + 120) s l);
+  --wide-gamut: color(display-p3 0.9 0.2 0.4);
+}
+
+.example {
+  color: var(--brand);
+  border-color: #ff6b3580;
+  background: linear-gradient(
+    135deg,
+    var(--mix),
+    oklch(60% 0.15 250),
+    transparent
+  );
+}
