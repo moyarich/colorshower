@@ -1,7 +1,10 @@
-# Visualize CSS Colors
+# ColorShower
 
-Native color swatches and a color picker for **desktop VS Code, VS Code for the
-Web, and TypeFox Monaco hosts**. The extension ID is
+CSS color visualization for **VS Code, VS Code for the Web, and Monaco editor hosts**.
+
+ColorShower provides native color swatches and a color picker across desktop,
+browser, and embedded Monaco environments. The package is published as
+`@moyarich/colorshower`. The extension ID is
 `moyarich.visualize-css-colors`.
 
 Open a CSS, SCSS, Less, HTML, JavaScript, TypeScript, JSX/TSX, Vue, or Svelte file.
@@ -23,6 +26,23 @@ the active branch of `light-dark()`. Fixed colors inside gradients or
 `light-dark()` remain inspectable. See the
 [parser documentation](https://github.com/moyarich/css-color-parser)
 for details.
+
+## Install the package
+
+ColorShower is published to GitHub Packages as `@moyarich/colorshower`.
+
+
+Then install normally:
+
+```sh
+npm install @moyarich/colorshower
+```
+
+To publish a validated release from the repository root:
+
+```sh
+npm run publish:github
+```
 
 ## Build and install
 
