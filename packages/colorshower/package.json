@@ -1,5 +1,5 @@
 {
-  "name": "@moyarich/vscode-visualize-css-colors",
+  "name": "@moyarich/colorshower",
   "version": "0.1.0",
   "description": "CSS color visualization for desktop VS Code, web VS Code, and Monaco extension hosts.",
   "license": "MIT",
