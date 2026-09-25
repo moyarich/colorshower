@@ -15,7 +15,8 @@
     "lint": "eslint . --max-warnings 0",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check": "npm run lint && npm run format:check && npm run typecheck && npm test && npm run build && npm run package"
+    "check": "npm run lint && npm run format:check && npm run typecheck && npm test && npm run build && npm run package",
+    "publish:github": "npm run publish:github --workspace @moyarich/colorshower"
   },
   "engines": {
     "node": "^22.13.0 || >=24"
