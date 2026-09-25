@@ -86,7 +86,7 @@ test("desktop and web entries share a standalone CommonJS bundle", async () => {
   );
   assert.deepEqual(staged, manifest);
   const { vscodeVisualizeCssColorsManifest } = await import(
-    "../packages/colorshower/dist/index.js"
+    "../packages/colorshower/dist/index.js",
   );
   assert.deepEqual(vscodeVisualizeCssColorsManifest, manifest);
   assert.equal(manifest.name, "visualize-css-colors");
@@ -100,7 +100,7 @@ test("desktop and web entries share a standalone CommonJS bundle", async () => {
   assert.equal(staged.dependencies, undefined);
   assert.equal(staged.scripts, undefined);
   const embedded = await import(
-    "../packages/colorshower/dist/extension-source.js"
+    "../packages/colorshower/dist/extension-source.js",
   );
   assert.equal(
     embedded.default,
