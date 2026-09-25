@@ -9,7 +9,9 @@ function App() {
     <main className="playground">
       <header className="playground__header">
         <h1>ColorShower Playground</h1>
-        <p>Select a CSS color swatch to open the native VS Code color picker.</p>
+        <p>
+          Select a CSS color swatch to open the native VS Code color picker.
+        </p>
       </header>
       <MonacoEditorReactComp
         vscodeApiConfig={vscodeApiConfig}
