@@ -43,7 +43,7 @@
     "vscode:prepublish": "npm run build",
     "prepack": "npm run build",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint src scripts demo test tsup.config.ts --max-warnings 0",
+    "lint": "eslint src scripts demo tsup.config.ts --max-warnings 0",
     "test": "npm run build && node --test ../../tests/*.test.mjs",
     "package": "npm run build && node ./scripts/package-extension.mjs",
     "package:ls": "npm run build && node ./scripts/package-extension.mjs --list",
