@@ -8,6 +8,13 @@ Open a CSS, SCSS, Less, HTML, JavaScript, TypeScript, JSX/TSX, Vue, or Svelte fi
 Select a color swatch to inspect or replace its value using the editor's native
 picker. Enable `editor.colorDecorators` if swatches are hidden.
 
+## Architecture
+
+`colorshower` owns the VS Code and Monaco color-provider integration. CSS color
+parsing and source extraction are provided by
+[`@moyarich/css-color-parser`](https://github.com/moyarich/css-color-parser),
+which remains a separate reusable package.
+
 ## Supported colors
 
 - Hex, named colors, `transparent`, RGB/RGBA, and HSL/HSLA.
