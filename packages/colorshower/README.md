@@ -29,9 +29,9 @@ for details.
 Run these commands from the repository root after `npm install`:
 
 ```sh
-npm run build --workspace @moyarich/vscode-visualize-css-colors
-npm test --workspace @moyarich/vscode-visualize-css-colors
-npm run package --workspace @moyarich/vscode-visualize-css-colors
+npm run build --workspace @moyarich/colorshower
+npm test --workspace @moyarich/colorshower
+npm run package --workspace @moyarich/colorshower
 ```
 
 The installable artifact is
@@ -50,7 +50,7 @@ The staged extension in `dist/vscode-extension/` has an unscoped VS Code manifes
 with both `main` and `browser` pointing to `dist/extension.cjs`. The CommonJS
 bundle contains the parser and `color-bits`; its only external module is the
 host's `vscode` API. No Node APIs or DOM globals are used by the provider.
-The scoped npm package remains `@moyarich/vscode-visualize-css-colors`, with its
+The scoped npm package remains `@moyarich/colorshower`, with its
 separate ESM/CJS metadata exports for applications. Keep the versions in
 `package.json` and `extension.manifest.json` in sync; the build checks this.
 
@@ -62,8 +62,8 @@ Register the extension source in a TypeFox Monaco host:
 import {
   vscodeVisualizeCssColorsBrowserPath,
   vscodeVisualizeCssColorsManifest,
-} from "@moyarich/vscode-visualize-css-colors";
-import extensionSource from "@moyarich/vscode-visualize-css-colors/extension-source";
+} from "@moyarich/colorshower";
+import extensionSource from "@moyarich/colorshower/extension-source";
 import type { MonacoVscodeApiConfig } from "monaco-languageclient/vscodeApiWrapper";
 import { configureDefaultWorkerFactory } from "monaco-languageclient/workerFactory";
 
