@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "npm run build --workspace @moyarich/vscode-visualize-css-colors && npm run dev --workspace @moyarich/colorshower-playground",
     "build": "npm run build --workspace @moyarich/vscode-visualize-css-colors && npm run build --workspace @moyarich/colorshower-playground",
-    "typecheck": "npm run typecheck --workspace @moyarich/vscode-visualize-css-colors && npm run typecheck --workspace @moyarich/colorshower-playground",
+    "typecheck": "npm run build --workspace @moyarich/vscode-visualize-css-colors && npm run typecheck --workspace @moyarich/vscode-visualize-css-colors && npm run typecheck --workspace @moyarich/colorshower-playground",
     "test": "npm run build --workspace @moyarich/vscode-visualize-css-colors && node --test tests/*.test.mjs",
     "package": "npm run package --workspace @moyarich/vscode-visualize-css-colors",
     "lint": "eslint . --max-warnings 0",
