@@ -2,15 +2,18 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { runInNewContext } from "node:vm";
 import { test } from "node:test";
-import { scenarios, selectScenarios } from "../demo/scenarios/index.mjs";
+import {
+  scenarios,
+  selectScenarios,
+} from "../packages/colorshower/demo/scenarios/index.mjs";
 import {
   readExtensionManifest,
   stageExtension,
 } from "@moyarich/vscode-dev-toolkit/extension";
-import config from "../vscode-dev.config.mjs";
+import config from "../packages/colorshower/vscode-dev.config.mjs";
 
 const source = await readFile(
-  new URL("../dist/extension.cjs", import.meta.url),
+  new URL("../packages/colorshower/dist/extension.cjs", import.meta.url),
   "utf8",
 );
 
@@ -82,7 +85,8 @@ test("desktop and web entries share a standalone CommonJS bundle", async () => {
     await readFile(`${extensionDirectory}/package.json`, "utf8"),
   );
   assert.deepEqual(staged, manifest);
-  const { vscodeVisualizeCssColorsManifest } = await import("../dist/index.js");
+  const { vscodeVisualizeCssColorsManifest } =
+    await import("../packages/colorshower/dist/index.js");
   assert.deepEqual(vscodeVisualizeCssColorsManifest, manifest);
   assert.equal(manifest.name, "visualize-css-colors");
   assert.equal(manifest.publisher, "moyarich");
@@ -94,7 +98,8 @@ test("desktop and web entries share a standalone CommonJS bundle", async () => {
   );
   assert.equal(staged.dependencies, undefined);
   assert.equal(staged.scripts, undefined);
-  const embedded = await import("../dist/extension-source.js");
+  const embedded =
+    await import("../packages/colorshower/dist/extension-source.js");
   assert.equal(
     embedded.default,
     source,

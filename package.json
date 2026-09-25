@@ -1,100 +1,37 @@
 {
-  "name": "@moyarich/vscode-visualize-css-colors",
-  "version": "0.1.0",
-  "description": "CSS color visualization for desktop VS Code, web VS Code, and Monaco extension hosts.",
-  "license": "MIT",
-  "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    },
-    "./manifest.json": "./extension.manifest.json",
-    "./extension.js": {
-      "types": "./dist/extension.d.cts",
-      "default": "./dist/extension.cjs"
-    },
-    "./extension-source": {
-      "types": "./dist/extension-source.d.ts",
-      "import": "./dist/extension-source.js"
-    }
-  },
-  "files": [
-    "dist/index.js",
-    "dist/index.cjs",
-    "dist/index.d.ts",
-    "dist/index.d.cts",
-    "dist/extension.cjs",
-    "dist/extension.d.cts",
-    "dist/extension-source.js",
-    "dist/extension-source.d.ts",
-    "extension.manifest.json"
+  "name": "colorshower-workspace",
+  "private": true,
+  "version": "0.0.0",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
   ],
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "scripts": {
-    "build": "node ./scripts/build.mjs",
-    "compile": "npm run build",
-    "vscode:prepublish": "npm run build",
-    "prepack": "npm run build",
-    "typecheck": "tsc --noEmit",
-    "lint": "eslint src scripts demo test tsup.config.ts --max-warnings 0",
-    "test": "npm run build && node --test test/*.test.mjs",
-    "package": "npm run build && node ./scripts/package-extension.mjs",
-    "package:ls": "npm run build && node ./scripts/package-extension.mjs --list",
-    "publish:openvsx": "npm run package && node --test test/*.test.mjs && node ./scripts/publish-extension.mjs",
-    "publish:extension": "npm run publish:openvsx",
-    "dev:extension": "npm run build && node ./demo/dev.mjs",
-    "demo": "npm run build && node ./demo/interactive.mjs",
-    "demo:record": "npm run build && node ./demo/run.mjs --demo",
-    "demo:all": "npm run demo:record -- --scenario=all",
-    "demo:mix": "npm run demo:record -- --scenario=color-mix",
-    "demo:relative": "npm run demo:record -- --scenario=relative-colors",
-    "demo:list": "node ./demo/run.mjs --list",
-    "demo:gif": "npm run build && node ./demo/gif.mjs",
-    "demo:codegen": "npm run build && node ./demo/run.mjs --codegen",
-    "demo:setup": "node ./demo/setup.mjs",
-    "prepare": "npm run build",
-    "check": "npm run lint && npm run typecheck && npm test && npm run package",
+    "dev": "npm run build --workspace @moyarich/vscode-visualize-css-colors && npm run dev --workspace @moyarich/colorshower-playground",
+    "build": "npm run build --workspace @moyarich/vscode-visualize-css-colors && npm run build --workspace @moyarich/colorshower-playground",
+    "typecheck": "npm run build --workspace @moyarich/vscode-visualize-css-colors && npm run typecheck --workspace @moyarich/vscode-visualize-css-colors && npm run typecheck --workspace @moyarich/colorshower-playground",
+    "test": "npm run build --workspace @moyarich/vscode-visualize-css-colors && node --test tests/*.test.mjs",
+    "package": "npm run package --workspace @moyarich/vscode-visualize-css-colors",
+    "lint": "eslint . --max-warnings 0",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "check": "npm run lint && npm run format:check && npm run typecheck && npm test && npm run build && npm run package"
   },
-  "dependencies": {
-    "@moyarich/css-color-parser": "git+https://github.com/moyarich/css-color-parser.git#480307a2b3efb6dcb3e7d70e833a9424cdf31956"
+  "engines": {
+    "node": "^22.13.0 || >=24"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moyarich/colorshower.git"
   },
   "devDependencies": {
-    "@types/vscode": "^1.138.0",
-    "tsup": "^8.5.0",
-    "typescript": "^5.9.2",
-    "@moyarich/vscode-dev-toolkit": "git+https://github.com/moyarich/vscode-dev-toolkit.git#39103eb672f5fde5e1483d7220c8909c08aef595",
     "@eslint/js": "^10.0.1",
     "eslint": "^10.11.0",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^17.12.0",
     "prettier": "^3.9.8",
+    "typescript": "^5.9.2",
     "typescript-eslint": "^8.70.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/moyarich/colorshower.git"
-  },
-  "bugs": {
-    "url": "https://github.com/moyarich/colorshower/issues"
-  },
-  "homepage": "https://github.com/moyarich/colorshower#readme",
-  "keywords": [
-    "vscode",
-    "monaco",
-    "web-extension",
-    "css",
-    "color"
-  ],
-  "engines": {
-    "node": "^22.13.0 || >=24"
   }
 }
