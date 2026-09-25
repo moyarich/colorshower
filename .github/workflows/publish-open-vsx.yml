@@ -24,11 +24,12 @@ jobs:
       - name: Save the installable extension
         uses: actions/upload-artifact@v4
         with:
-          name: visualize-css-colors-vsix
-          path: artifacts/*.vsix
+          name: colorshower-vsix
+          path: packages/colorshower/artifacts/*.vsix
           if-no-files-found: error
       - name: Publish the validated package
         if: ${{ inputs.publish }}
+        working-directory: packages/colorshower
         env:
           OVSX_PAT: ${{ secrets.OVSX_PAT }}
         run: node scripts/publish-extension.mjs
