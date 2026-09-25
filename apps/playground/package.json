@@ -17,7 +17,7 @@
     "@codingame/monaco-vscode-standalone-json-language-features": "^37.1.0",
     "@codingame/monaco-vscode-standalone-languages": "^37.1.0",
     "@codingame/monaco-vscode-standalone-typescript-language-features": "^37.1.0",
-    "@moyarich/vscode-visualize-css-colors": "*",
+    "@moyarich/colorshower": "*",
     "@typefox/monaco-editor-react": "^8.0.2",
     "monaco-editor": "npm:@codingame/monaco-vscode-editor-api@^37.1.0",
     "monaco-languageclient": "~11.0.2",
