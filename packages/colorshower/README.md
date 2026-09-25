@@ -29,17 +29,17 @@ for details.
 Run these commands from the repository root after `npm install`:
 
 ```sh
-npm run build
-npm test
-npm run package
+npm run build --workspace @moyarich/vscode-visualize-css-colors
+npm test --workspace @moyarich/vscode-visualize-css-colors
+npm run package --workspace @moyarich/vscode-visualize-css-colors
 ```
 
 The installable artifact is
-`artifacts/visualize-css-colors-0.1.0.vsix`.
+`packages/colorshower/artifacts/visualize-css-colors-0.1.0.vsix`.
 Use **Extensions: Install from VSIX** in a compatible editor, or:
 
 ```sh
-code --install-extension artifacts/visualize-css-colors-0.1.0.vsix
+code --install-extension packages/colorshower/artifacts/visualize-css-colors-0.1.0.vsix
 ```
 
 Browser hosts must support web extensions and loading a VSIX or an extension
