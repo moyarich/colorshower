@@ -1,5 +1,7 @@
 # ColorShower
 
+**Playground:** https://moyarich.github.io/colorshower/
+
 ColorShower is a monorepo for the VS Code/Monaco CSS color visualization extension.
 
 ## Workspace
