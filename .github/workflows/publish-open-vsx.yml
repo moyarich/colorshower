@@ -1,0 +1,34 @@
+name: Package and publish CSS color extension
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish the validated VSIX to Open VSX
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  extension:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm install --include=optional
+      - run: npm run check
+      - name: Save the installable extension
+        uses: actions/upload-artifact@v4
+        with:
+          name: visualize-css-colors-vsix
+          path: artifacts/*.vsix
+          if-no-files-found: error
+      - name: Publish the validated package
+        if: ${{ inputs.publish }}
+        env:
+          OVSX_PAT: ${{ secrets.OVSX_PAT }}
+        run: node scripts/publish-extension.mjs
