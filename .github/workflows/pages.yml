@@ -34,10 +34,11 @@ jobs:
       - name: Install dependencies
         run: npm install --include=optional
 
+      - name: Build extension
+        run: npm run build --workspace @moyarich/vscode-visualize-css-colors
+
       - name: Build playground
-        env:
-          VITE_BASE_PATH: /colorshower/
-        run: npm run build
+        run: npm run build --workspace @moyarich/colorshower-playground -- --base=/colorshower/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
