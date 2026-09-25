@@ -16,12 +16,12 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/moyarich/console.git",
-    "directory": "packages/visualize-css-colors/vscode-visualize-css-colors"
+    "directory": "packages/colorshower"
   },
   "bugs": {
     "url": "https://github.com/moyarich/console/issues"
   },
-  "homepage": "https://github.com/moyarich/console/tree/main/packages/visualize-css-colors/vscode-visualize-css-colors",
+  "homepage": "https://github.com/moyarich/colorshower/tree/main/packages/colorshower",
   "capabilities": {
     "virtualWorkspaces": true,
     "untrustedWorkspaces": {
