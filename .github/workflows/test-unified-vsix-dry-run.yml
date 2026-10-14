@@ -13,7 +13,7 @@ jobs:
     with:
       package-directory: packages/colorshower
       install-command: npm install --include=optional
-      check-command: npm run check
+      check-command: npm run package
       artifact-glob: packages/colorshower/artifacts/*.vsix
       artifact-name: colorshower-unified-vsix
       registry: all
