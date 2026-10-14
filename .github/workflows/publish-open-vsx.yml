@@ -50,6 +50,7 @@ jobs:
       registry: ${{ inputs.registry }}
       registries-file: ${{ inputs.registries-file }}
       version: ${{ inputs.version }}
+      release-tag-prefix: packages/colorshower@
       release-tag: ${{ inputs.release-tag }}
       attach-release-asset: ${{ inputs.attach-release-asset }}
       dry-run: ${{ inputs.dry-run }}
