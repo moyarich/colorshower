@@ -15,11 +15,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/moyarich/console.git",
+    "url": "https://github.com/moyarich/colorshower.git",
     "directory": "packages/colorshower"
   },
   "bugs": {
-    "url": "https://github.com/moyarich/console/issues"
+    "url": "https://github.com/moyarich/colorshower/issues"
   },
   "homepage": "https://github.com/moyarich/colorshower/tree/main/packages/colorshower",
   "capabilities": {
