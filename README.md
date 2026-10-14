@@ -17,7 +17,6 @@ The package is published to GitHub Packages:
 npm install @moyarich/colorshower
 ```
 
-
 ## Publish
 
 ```sh

@@ -2,6 +2,14 @@ name: Reset release
 on:
   workflow_dispatch:
     inputs:
+      package:
+        description: Package selector (all, name, or directory)
+        type: string
+        default: packages/colorshower
+      target-branch:
+        description: Release target branch
+        type: string
+        default: main
       match-mode:
         description: Match package manifest or exact tag
         type: choice
@@ -25,8 +33,8 @@ jobs:
       pull-requests: read
     uses: moyarich/reusable-workflows/.github/workflows/reusable_bulk-reset-release.yml@main
     with:
-      package: packages/colorshower
-      target-branch: main
+      package: ${{ inputs.package }}
+      target-branch: ${{ inputs.target-branch }}
       match-mode: ${{ inputs.match-mode }}
       exact-tag: ${{ inputs.exact-tag }}
       dry-run: ${{ inputs.dry-run }}
