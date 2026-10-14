@@ -2,6 +2,14 @@ name: Restore release
 on:
   workflow_dispatch:
     inputs:
+      package:
+        description: Package selector (all, name, or directory)
+        type: string
+        default: packages/colorshower
+      target-branch:
+        description: Release target branch
+        type: string
+        default: main
       restore-source:
         description: "commit:<sha>, tag:<tag>, run:<id>, artifact:<id>, or github-url:<url>"
         required: true
@@ -32,8 +40,8 @@ jobs:
       pull-requests: read
     uses: moyarich/reusable-workflows/.github/workflows/reusable_bulk-restore-release.yml@main
     with:
-      package: packages/colorshower
-      target-branch: main
+      package: ${{ inputs.package }}
+      target-branch: ${{ inputs.target-branch }}
       restore-source: ${{ inputs.restore-source }}
       match-mode: ${{ inputs.match-mode }}
       exact-tag: ${{ inputs.exact-tag }}
