@@ -12,8 +12,8 @@ import getLanguagesServiceOverride from "@codingame/monaco-vscode-languages-serv
 import {
   vscodeVisualizeCssColorsBrowserPath,
   vscodeVisualizeCssColorsManifest,
-} from "@moyarich/vscode-visualize-css-colors";
-import extensionSource from "@moyarich/vscode-visualize-css-colors/extension-source";
+} from "@moyarich/colorshower";
+import extensionSource from "@moyarich/colorshower/extension-source";
 import type { MonacoVscodeApiConfig } from "monaco-languageclient/vscodeApiWrapper";
 import {
   defineDefaultWorkerLoaders,
