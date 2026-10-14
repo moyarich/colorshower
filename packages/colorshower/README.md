@@ -31,7 +31,6 @@ for details.
 
 ColorShower is published to GitHub Packages as `@moyarich/colorshower`.
 
-
 Then install normally:
 
 ```sh
