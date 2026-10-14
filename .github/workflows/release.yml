@@ -1,0 +1,31 @@
+name: Release package
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Exact version from packages/colorshower/package.json
+        type: string
+        required: true
+        default: "0.1.0"
+      draft:
+        description: Leave GitHub release as draft
+        type: boolean
+        default: true
+      dry-run:
+        description: Preview without changing release or tags
+        type: boolean
+        default: true
+permissions:
+  contents: write
+jobs:
+  release:
+    uses: moyarich/reusable-workflows/.github/workflows/reusable_release.yml@main
+    with:
+      version: ${{ inputs.version }}
+      release-tag: packages/colorshower@${{ inputs.version }}
+      release-name: "@moyarich/colorshower v${{ inputs.version }}"
+      changelog-file: packages/colorshower/CHANGELOG.md
+      target-ref: main
+      dry-run: ${{ inputs.dry-run }}
+      create-tag: true
+      draft: ${{ inputs.draft }}

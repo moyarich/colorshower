@@ -1,0 +1,34 @@
+name: Publish npm package
+on:
+  workflow_dispatch:
+    inputs:
+      registry:
+        description: Package registry
+        type: choice
+        options: [github, npm, all]
+        default: github
+      tag:
+        description: Distribution tag
+        type: string
+        default: latest
+      dry-run:
+        description: Preview without publishing
+        type: boolean
+        default: true
+permissions:
+  contents: write
+  packages: write
+jobs:
+  publish:
+    uses: moyarich/reusable-workflows/.github/workflows/reusable_npm-publish.yml@main
+    with:
+      package-directory: packages/colorshower
+      target-branch: main
+      registry: ${{ inputs.registry }}
+      tag: ${{ inputs.tag }}
+      version-mode: package-json
+      verify-git-tag: true
+      dry-run: ${{ inputs.dry-run }}
+      node-version: "24"
+    secrets:
+      npm-token: ${{ secrets._NPM_TOKEN }}

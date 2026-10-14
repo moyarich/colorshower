@@ -1,0 +1,23 @@
+name: Draft package release
+on:
+  push:
+    branches: [main]
+    paths:
+      - "packages/colorshower/**"
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: read
+jobs:
+  draft:
+    uses: moyarich/reusable-workflows/.github/workflows/reusable_release-drafter.yml@main
+    with:
+      target-branch: main
+      version-mode: package-json
+      package-name: "@moyarich/colorshower"
+      package-directory: packages/colorshower
+      tag-prefix: "packages/colorshower@"
+      target-key: packages/colorshower
+      release-name: "@moyarich/colorshower v{{VERSION}}"
+      changelog-path: packages/colorshower/CHANGELOG.md
+      dry-run: false
