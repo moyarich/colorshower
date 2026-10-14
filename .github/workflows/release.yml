@@ -7,6 +7,22 @@ on:
         type: string
         required: true
         default: "0.1.0"
+      create-tag:
+        description: Create the release tag if missing
+        type: boolean
+        default: true
+      release-notes:
+        description: Optional release notes override
+        type: string
+        default: ""
+      major-tag:
+        description: Optional major compatibility tag
+        type: string
+        default: ""
+      update-major-tag:
+        description: Move the major tag
+        type: boolean
+        default: false
       draft:
         description: Leave GitHub release as draft
         type: boolean
@@ -27,5 +43,8 @@ jobs:
       changelog-file: packages/colorshower/CHANGELOG.md
       target-ref: main
       dry-run: ${{ inputs.dry-run }}
-      create-tag: true
+      create-tag: ${{ inputs.create-tag }}
+      release-notes: ${{ inputs.release-notes }}
+      major-tag: ${{ inputs.major-tag }}
+      update-major-tag: ${{ inputs.update-major-tag }}
       draft: ${{ inputs.draft }}
