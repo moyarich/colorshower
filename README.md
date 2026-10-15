@@ -1,33 +1,29 @@
 # ColorShower
 
-CSS color visualization for **VS Code, VS Code for the Web, and Monaco editor hosts**.
+Native CSS color swatches and color-picker integration for **VS Code, VS Code for the Web, and Monaco hosts**.
 
-ColorShower provides native editor color swatches and color-picker integration for modern CSS colors. The reusable package is published as `@moyarich/colorshower`.
+ColorShower supports modern CSS color syntax, including Lab, OKLCH, `color-mix()`, and relative colors. The reusable package is `@moyarich/colorshower`.
 
-## Workspace
+## Get started
 
-- `packages/colorshower` — publishable `@moyarich/colorshower` package and VS Code/web extension
-- `apps/playground` — TypeFox Monaco playground using ColorShower
-
-## Install
-
-The package is published to GitHub Packages:
+Install the package from GitHub Packages:
 
 ```sh
 npm install @moyarich/colorshower
 ```
 
-## Publish
+Open a supported file in VS Code and select a color swatch to inspect or change its color. For embedded editors, see the [Monaco integration guide](docs/02-monaco-integration.md).
 
-```sh
-npm run publish:github
-```
+## Documentation and examples
 
-The publish command validates the package before publishing `@moyarich/colorshower` to GitHub Packages.
+- [Capabilities and limitations](docs/01-getting-started.md)
+- [Monaco integration](docs/02-monaco-integration.md)
+- [Color syntax examples](examples/colors.css)
+- [Interactive playground](https://moyarich.github.io/colorshower/)
+- [Public changelog](packages/colorshower/CHANGELOG.md)
 
-## Dependency
+## Development
 
-Color parsing is intentionally maintained separately in
-[moyarich/css-color-parser](https://github.com/moyarich/css-color-parser).
+Local setup, testing, desktop demos and publishing procedures are in [development documentation](docs/development/README.md).
 
-See [packages/colorshower/README.md](./packages/colorshower/README.md) for the API, Monaco integration, VS Code extension workflow, demos, and Open VSX publishing.
+Color parsing is maintained independently in [css-color-parser](https://github.com/moyarich/css-color-parser).
