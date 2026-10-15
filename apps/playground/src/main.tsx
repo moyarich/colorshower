@@ -19,11 +19,11 @@ const pages = [
 
 
 function inlineContent(value: string) {
-  return value.split(/(`[^`]+`|\\[[^\\]]+\\]\\([^)]+\\))/g).map((part, index) => {
+  return value.split(/(`[^`]+`|\[[^\]]+\]\([^)]+\))/g).map((part, index) => {
     if (part.startsWith("`") && part.endsWith("`")) return <code key={index}>{part.slice(1, -1)}</code>;
-    const link = /^\\[([^\\]]+)\\]\\(([^)]+)\\)$/.exec(part);
+    const link = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(part);
     if (link) {
-      const href = link[2].startsWith("../") ? "https://github.com/moyarich/colorshower/blob/main/" + link[2].replace(/^\\.\\.\\//, "") : link[2];
+      const href = link[2].startsWith("../") ? "https://github.com/moyarich/colorshower/blob/main/" + link[2].replace(/^\.\.\//, "") : link[2];
       return <a key={index} href={href}>{link[1]}</a>;
     }
     return part;
@@ -31,12 +31,12 @@ function inlineContent(value: string) {
 }
 
 function Document({ source }: { source: string }) {
-  const lines = source.split("\\n");
+  const lines = source.split("\n");
   const blocks: import("react").ReactNode[] = [];
   let code: string[] | null = null;
   lines.forEach((line, index) => {
     if (line.startsWith("```")) {
-      if (code) { blocks.push(<pre key={index}><code>{code.join("\\n")}</code></pre>); code = null; }
+      if (code) { blocks.push(<pre key={index}><code>{code.join("\n")}</code></pre>); code = null; }
       else code = [];
     } else if (code) code.push(line);
     else if (line.startsWith("### ")) blocks.push(<h3 key={index}>{inlineContent(line.slice(4))}</h3>);
