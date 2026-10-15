@@ -1,9 +1,10 @@
 # Changelog
 
+All entries describe changes to published, end-user ColorShower capabilities. Repository tooling and release automation belong in development documentation.
+
 ## 0.1.0
 
-- Native color swatches and picker presentations in desktop and web VS Code.
-- Hex, named colors, RGB/HSL, HWB, Lab/LCH, OKLab/OKLCH, and `color()`.
-- Weighted and nested `color-mix()` plus relative colors with `calc()`.
-- Shared browser bundle for the TypeFox Monaco playground.
-- Color-focused desktop demos and an Open VSX publishing command.
+- Added native color swatches and picker presentations for desktop and web VS Code.
+- Added recognition of hex, named, RGB/HSL, HWB, Lab/LCH, OKLab/OKLCH and `color()` values.
+- Added weighted and nested `color-mix()` and relative colors with `calc()`.
+- Added browser-compatible extension integration for Monaco hosts.
