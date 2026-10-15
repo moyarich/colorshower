@@ -16,12 +16,14 @@ const vscodeApiConfig = {
   userConfiguration: {
     json: JSON.stringify({ "editor.colorDecorators": true }),
   },
-  extensions: [{
-    config: vscodeVisualizeCssColorsManifest,
-    filesOrContents: new Map([
-      [vscodeVisualizeCssColorsBrowserPath, extensionSource],
-    ]),
-  }],
+  extensions: [
+    {
+      config: vscodeVisualizeCssColorsManifest,
+      filesOrContents: new Map([
+        [vscodeVisualizeCssColorsBrowserPath, extensionSource],
+      ]),
+    },
+  ],
   monacoWorkerFactory: configureDefaultWorkerFactory,
 };
 ```
