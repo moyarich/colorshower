@@ -44,13 +44,15 @@ function inlineContent(value: string) {
       return <code key={index}>{part.slice(1, -1)}</code>;
     const link = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(part);
     if (link) {
-      const href = link[2].startsWith("../")
+      const [, label, target] = link;
+      if (!label || !target) return part;
+      const href = target.startsWith("../")
         ? "https://github.com/moyarich/colorshower/blob/main/" +
-          link[2].replace(/^\.\.\//, "")
-        : link[2];
+          target.replace(/^\.\.\//, "")
+        : target;
       return (
         <a key={index} href={href}>
-          {link[1]}
+          {label}
         </a>
       );
     }
