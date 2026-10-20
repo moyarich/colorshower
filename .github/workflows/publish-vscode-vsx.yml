@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       package:
-        description: Select a publishable workspace package
+        description: Select a VS Code extension workspace
         required: true
         type: choice
         default: packages/colorshower
