@@ -1,0 +1,17 @@
+name: Check distribution
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-dist:
+    name: Check ColorShower distribution
+    uses: moyarich/reusable-workflows/.github/workflows/reusable_check-dist.yml@main
+    with:
+      dist-path: packages/colorshower/dist/
+      build-command: npm run build --workspace @moyarich/colorshower
+      node-version: "24"
+      artifact-name: colorshower-dist
