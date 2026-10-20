@@ -1,37 +1,67 @@
-name: Restore release
+name: Restore Release
+
+run-name: >-
+  Restore release · ${{ inputs.package }} · ${{ inputs.restore-source }} · dry-run=${{
+  inputs.dry-run }}
+
 on:
   workflow_dispatch:
     inputs:
       package:
-        description: Package selector (all, name, or directory)
-        type: string
-        default: packages/colorshower
+        description: Select a publishable workspace package
+        required: true
+        type: choice
+        default: all
+        options:
+          - all
+          - packages/colorshower
       target-branch:
-        description: Release target branch
-        type: string
+        description: Branch used to resolve the package path and changelog
+        required: true
         default: main
+        type: string
       restore-source:
-        description: "commit:<sha>, tag:<tag>, run:<id>, artifact:<id>, or github-url:<url>"
+        description:
+          "Historical source: commit:<sha>, tag:<tag>, run:<id>, artifact:<id>,
+          or github-url:<supported GitHub URL>"
         required: true
         type: string
       match-mode:
-        type: choice
-        options: [package-json, exact]
+        description: Find release by package version or exact tag
+        required: true
         default: package-json
+        type: choice
+        options:
+          - package-json
+          - exact
       exact-tag:
-        description: Tag to restore in exact mode
-        type: string
+        description: Existing release tag to match when match-mode is exact
+        required: false
         default: ""
+        type: string
       skip-finalized:
-        description: Leave finalized releases unchanged
+        description: Skip finalized releases without modifying them (for bulk
+          live recovery)
+        required: true
+        default: false
         type: boolean
-        default: true
       dry-run:
-        description: Preview without mutations
-        type: boolean
+        description: Preview recovery without mutating the release or tag
+        required: true
         default: true
+        type: boolean
+
 permissions: {}
+
 jobs:
+  dispatch-input-summary:
+    name: "job: Workflow parameters"
+    permissions:
+      contents: read
+    uses: moyarich/reusable-workflows/.github/workflows/reusable_dispatch-input-summary.yml@main
+    with:
+      parameters-json: ${{ toJSON(inputs) }}
+      heading: "restore release · Dispatch parameters"
   restore:
     permissions:
       actions: read
@@ -42,8 +72,8 @@ jobs:
     with:
       package: ${{ inputs.package }}
       target-branch: ${{ inputs.target-branch }}
-      restore-source: ${{ inputs.restore-source }}
       match-mode: ${{ inputs.match-mode }}
       exact-tag: ${{ inputs.exact-tag }}
+      restore-source: ${{ inputs.restore-source }}
       skip-finalized: ${{ inputs.skip-finalized }}
       dry-run: ${{ inputs.dry-run }}
