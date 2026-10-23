@@ -1,0 +1,31 @@
+name: CI / Actionlint
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/**"
+      - "src/**"
+      - "tests/**"
+      - "package.json"
+      - "package-lock.json"
+      - "tsconfig.base.json"
+      - "eslint.config.mjs"
+  pull_request:
+    paths:
+      - ".github/workflows/**"
+      - "src/**"
+      - "tests/**"
+      - "package.json"
+      - "package-lock.json"
+      - "tsconfig.base.json"
+      - "eslint.config.mjs"
+  workflow_call:
+  workflow_dispatch:
+concurrency:
+  group: ci-${{ github.repository }}-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  actionlint:
+    uses: moyarich/reusable-workflows/.github/workflows/reusable_actionlint.yml@main
