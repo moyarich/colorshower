@@ -4,12 +4,18 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+    inputs:
+      checkout-sha:
+        description: Exact commit SHA to validate
+        type: string
+        required: false
+        default: ""
 permissions:
   contents: read
   packages: read
 jobs:
   checks:
-    uses: moyarich/reusable-workflows/.github/workflows/reusable_node-ci.yml@main
+    name: Node / build, lint, typecheck, tests
+    uses: ./.github/workflows/ci_cli.yml
     with:
-      package-directory: .
-      node-version: "24"
+      checkout-sha: ${{ inputs.checkout-sha || '' }}
