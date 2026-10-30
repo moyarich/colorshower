@@ -8,12 +8,10 @@ on:
   workflow_dispatch:
     inputs:
       package:
-        description: Select a VS Code extension workspace
+        description: VS Code extension directory (one extension per run)
         required: true
-        type: choice
-        default: packages/colorshower
-        options:
-          - packages/colorshower
+        type: string
+        default: .
       registry:
         description: Extension registry
         type: choice
@@ -64,13 +62,14 @@ jobs:
       package-directory: ${{ inputs.package }}
       target-branch: ${{ github.ref_name }}
       install-command: npm ci --include=optional
-      check-command: npm run package --workspace @moyarich/colorshower
-      artifact-glob: packages/colorshower/artifacts/*.vsix
+      check-command: npm run build --if-present
+      artifact-glob: ""
       artifact-name: extension-vsix
       registry: ${{ inputs.registry }}
       registries-file: ${{ inputs.registries-file }}
       version: ${{ inputs.version }}
-      release-tag-prefix: ${{ format('{0}@', inputs.package) }}
+      release-tag-prefix: ${{ inputs.package == '.' && 'v' || format('{0}@',
+        inputs.package) }}
       release-tag: ${{ inputs.release-tag }}
       attach-release-asset: ${{ inputs.attach-release-asset }}
       dry-run: ${{ inputs.dry-run }}
