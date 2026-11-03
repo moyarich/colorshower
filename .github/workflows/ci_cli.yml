@@ -3,22 +3,16 @@ on:
   push:
     branches: [main]
     paths:
-      - ".github/workflows/**"
+      - ".github/workflows/ci_cli.yml"
       - "src/**"
+      - "packages/**"
+      - "apps/**"
       - "tests/**"
-      - "package.json"
-      - "package-lock.json"
-      - "tsconfig.base.json"
-      - "eslint.config.mjs"
+      - "**/*.{ts,tsx,js,jsx,mjs,cjs}"
+      - "**/{vite,vitest,eslint,tsconfig}*.{js,mjs,cjs,ts,json}"
+      - "package*.json"
+      - ".npmrc"
   pull_request:
-    paths:
-      - ".github/workflows/**"
-      - "src/**"
-      - "tests/**"
-      - "package.json"
-      - "package-lock.json"
-      - "tsconfig.base.json"
-      - "eslint.config.mjs"
   workflow_call:
     inputs:
       checkout-sha:
